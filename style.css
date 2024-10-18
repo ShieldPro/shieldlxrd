@@ -1,0 +1,78 @@
+:root{
+    --primary-bg: #161618;
+    --secondary-bg: #1c1c1f;
+    --tertiary-bg: #232326;
+    --quaternary-bg: #28282c;
+    --quinary-bg: #2e2e32;
+
+    --primary-text: #f7f8f8;
+    --secondary-text: #d0d6e0;
+
+}
+
+body{
+    background-color: black;
+    color: var(--primary-text);
+}
+
+#section1{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#discordCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+#discordAvatar{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    outline: 3px solid rgb(128, 132, 142);
+    outline-offset: 4px;
+    margin-bottom: 12px;
+}
+
+#discordDisplayName{
+    font-weight: bold;
+    font-size: 120%;
+}
+
+#discordUsername{
+    font-size: 80%;
+    color: var(--secondary-text);
+    position: relative;
+    top: -4px;
+    user-select: text;
+}
+
+#discordPresence{
+    display: flex;
+}
+
+#discordPresenceThumbnail{
+    height: 64px;
+    border-radius: 4px;
+}
+
+#discordPresenceTexts{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    font-size: 80%;
+    line-height: 140%;
+}
+
+#discordPresenceName{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+hr{
+    width: 100%;
+}
