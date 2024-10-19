@@ -30,10 +30,21 @@ async function loadDiscordData(){
     document.querySelector("#discordUsername").innerHTML = "@" + data.username;
     document.querySelector("#discordAvatar").style.outlineColor = data.status == "online" && "rgb(35, 165, 90)" || data.status == "dnd" && "rgb(242, 63, 67)" || data.status == "idle" && "rgb(240, 178, 50)" || "rgb(128, 132, 142)";
 
-    document.querySelector("#discordPresenceThumbnail").src = "https://cdn.discordapp.com/app-assets/" + data.presence[2].application_id + "/" + data.presence[2].assets.large_image + ".png?size=160";
-    document.querySelector("#discordPresenceName").innerHTML = data.presence[2].name;
-    document.querySelector("#discordPresenceState").innerHTML = data.presence[2].state;
-    document.querySelector("#discordPresenceDetails").innerHTML = data.presence[2].details;
+    data.presence.forEach(app => {
+        if (app.type == 4 || app.type == 2){ return; };
+        var div = document.createElement("div");
+        div.className = "discordApp";
+        div.innerHTML = `
+            <img class="discordAppThumbnail" src="https://cdn.discordapp.com/app-assets/${app.application_id}/${app.assets.large_image}.png?size=160" />
+
+            <div class="discordAppTexts">
+                <span class="discordAppName">${app.name || ""}</span>
+                <span class="discordAppState">${app.state || ""}</span>
+                <span class="discordAppDetails">${app.details || ""}</span>
+            </div>
+        `;
+        document.querySelector("#discordApps").appendChild(div);
+    });
 
 }
 
