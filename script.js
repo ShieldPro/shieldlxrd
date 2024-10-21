@@ -22,28 +22,32 @@ async function getDiscordData(){
     }
 }
 
-async function getSpotifyData() {
-    const client_id = "72fc44d7220940e8bb8c0bcb31a731dd";
-    const client_secret = "b19cd98d03ce403584fa6e8e74a34f04";
-    const auth_code = "AQBb9ij0J-FsYiqGPN39RpMtBDJF_-RuzmOQMaMTR3S-b17-GiEyY_Zy1s88M31ZuSAK632YkUloYmzFBAs0msBZ4CB2ZDrJ-EfKsF3rI0ma9aPiRFZ2oS2PVh0Hk90f-x0F1zP4WU2JEEi55ujDrUC9XeXo-dK1H8k";
+async function getSpotifyAccessToken(){
+    var client_id = '72fc44d7220940e8bb8c0bcb31a731dd';
+    var client_secret = 'b19cd98d03ce403584fa6e8e74a34f04';
+    const refresh_token = 'AQB4JNb5Mng5w4SK-QnF08_sbWc-PH2cGfAhh-UwVDVEqUUUZXC3rDyuD0Fhd0GhQxvcyiBtsfp0-b-0F-e0zzuMuEeZg7GiIDpjv89b1XrQem6m7-nSdb2yPWfK2XqZg7g';
 
+    try {
+        const response = await fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
+            },
+            body: `grant_type=refresh_token&refresh_token=${refresh_token}`
+        });
 
-        try {
-            const response = await fetch('https://accounts.spotify.com/api/token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
-                },
-                body: `grant_type=refresh_token&refresh_token=${auth_code}`
-            });
+        const data = await response.json();
+        return data.access_token; 
+    } catch (error) {
+        console.error('Błąd podczas odświeżania access_token spotify.' /*+ error*/);
+    }
+}
 
-            const data = await response.json();
-            return data.access_token;
-        } catch (error) {
-            console.error('Błąd podczas odświeżania access_token spotify.' /*+ error*/);
-        }
+var spotify_access_token = getSpotifyAccessToken();
 
+async function getSpotifyData(){
+    
 }
 getSpotifyData()
 
