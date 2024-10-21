@@ -22,6 +22,28 @@ async function getDiscordData(){
     }
 }
 
+async function getSpotifyData() {
+    const client_id = "72fc44d7220940e8bb8c0bcb31a731dd";
+    const client_secret = "b19cd98d03ce403584fa6e8e74a34f04";
+    const auth_code = "AQBb9ij0J-FsYiqGPN39RpMtBDJF_-RuzmOQMaMTR3S-b17-GiEyY_Zy1s88M31ZuSAK632YkUloYmzFBAs0msBZ4CB2ZDrJ-EfKsF3rI0ma9aPiRFZ2oS2PVh0Hk90f-x0F1zP4WU2JEEi55ujDrUC9XeXo-dK1H8k";
+
+    try {
+        const response = await fetch("https://accounts.spotify.com/api/token", {
+            method: "POST",
+            body: `grant_type=refresh_token&refresh_token=${auth_code}`,
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
+            },
+        });
+
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
+}
+getSpotifyData()
+
 async function loadDiscordData(){
     const data = await getDiscordData();
 
