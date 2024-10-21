@@ -27,20 +27,23 @@ async function getSpotifyData() {
     const client_secret = "b19cd98d03ce403584fa6e8e74a34f04";
     const auth_code = "AQBb9ij0J-FsYiqGPN39RpMtBDJF_-RuzmOQMaMTR3S-b17-GiEyY_Zy1s88M31ZuSAK632YkUloYmzFBAs0msBZ4CB2ZDrJ-EfKsF3rI0ma9aPiRFZ2oS2PVh0Hk90f-x0F1zP4WU2JEEi55ujDrUC9XeXo-dK1H8k";
 
-    try {
-        const response = await fetch("https://accounts.spotify.com/api/token", {
-            method: "POST",
-            body: `grant_type=refresh_token&refresh_token=${auth_code}`,
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
-            },
-        });
 
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+        try {
+            const response = await fetch('https://accounts.spotify.com/api/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+                },
+                body: `grant_type=refresh_token&refresh_token=${refreshToken}`
+            });
+
+            const data = await response.json();
+            return data.access_token;
+        } catch (error) {
+            console.error('Błąd podczas odświeżania access_token spotify.' /*+ error*/);
+        }
+
 }
 getSpotifyData()
 
