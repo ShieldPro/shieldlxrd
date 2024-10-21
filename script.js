@@ -33,9 +33,9 @@ async function getSpotifyData() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+                    'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
                 },
-                body: `grant_type=refresh_token&refresh_token=${refreshToken}`
+                body: `grant_type=refresh_token&refresh_token=${auth_code}`
             });
 
             const data = await response.json();
