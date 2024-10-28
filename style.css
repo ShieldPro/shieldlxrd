@@ -9,37 +9,126 @@
     --secondary-text: #d0d6e0;
     --tertiary-text: #8a8f98;
     --quaternary-text: #62666d;
+
+    --positive-color: #67d08a;
 }
 
 body{
     background-color: black;
     color: var(--primary-text);
+    font-family: "Inter";
 }
 
 .section{
-    min-height: 100vh;
-}
-
-#section1{
     display: flex;
-    align-items: center;
+    min-height: 100vh;
     justify-content: center;
+    align-items: center;
+
+    scroll-snap-align: start;
 }
 
-#discordCard{
+#discord{
     display: flex;
     flex-direction: column;
     align-items: center;
     user-select: none;
+    margin: 50px 0 50px 0;
+}
+
+#discordApps{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+.discordApp{
+    display: flex;
+    align-items: center;
+}
+
+.discordAppThumbnail{
+    height: 64px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.discordAppLargeImage{
+    border-radius: 4px;
+    height: 100%;
+}
+
+.discordAppSmallImage{
+    height: 20px;
+    outline: 4px black solid;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    outline-offset: -1px;
+}
+
+.discordAppTexts{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    font-size: 0.7rem;
+    width: 75%;
+    overflow: hidden;
+    color: var(--secondary-text);
+}
+
+.discordAppName{
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--primary-text);
+}
+
+.discordAppTime{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--positive-color);
+    font-weight: bold;
+}
+
+.discordAppTime svg{
+    height: 1em;
+}
+
+.discordAppTrackInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.discordAppTrack{
+    width: 150px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.discordAppPointer{
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+}
+
+hr{
+    width: 100%;
+    background: var(--tertiary-text);
+    /*background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);*/
+    height: 1px;
+    border: none;
 }
 
 #discordAvatar{
-    border-radius: 50%;
-    height: 100px;
     width: 100px;
-    outline: 3px solid rgb(128, 132, 142);
-    outline-offset: 4px;
-    margin-bottom: 12px;
+    border-radius: 50%;
+    outline: 3px rgb(128, 132, 142) solid;
+    outline-offset: 5px;
+    margin-bottom: 15px;
 }
 
 #discordDisplayName{
@@ -50,55 +139,9 @@ body{
 #discordUsername{
     font-size: 0.8rem;
     color: var(--secondary-text);
-    position: relative;
-    user-select: text;
-    line-height: 0.9rem;
+    user-select: all;
 }
 
-.discordApp{
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.discordAppThumbnail{
-    height: 64px;
-    border-radius: 6px;
-}
-
-.discordAppTexts{
-    display: flex;
-    flex-direction: column;
-    margin-left: 15px;
-    font-size: 0.8rem;
-    line-height: 140%;
-    color: var(--secondary-text);
-}
-
-.discordAppName{
-    font-weight: bold;
-    font-size: 1rem;
-    color: var(--primary-text);
-}
-
-hr{
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-    border: none;
-    display: block;
-}
-
-#discordApps{
-    display: flex;
-    flex-direction: column;
+#discord hr{
     display: none;
-}
-
-#discordApps:has(.discordApp){
-    display: flex;
-}
-
-#discordApps:last-child{
-    margin: 0;
 }
