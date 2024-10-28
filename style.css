@@ -102,6 +102,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 .discordAppTrack{
@@ -113,6 +114,10 @@ body{
 .discordAppPointer{
     height: 2px;
     background-color: rgb(255, 255, 255);
+}
+
+.discordAppTrackInfo span{
+    width: 32px;
 }
 
 hr{
