@@ -85,7 +85,7 @@ async function injectDiscordData(){
         discordApps.prepend(div);
     };
 
-    if (data.activities.length > 0){ document.querySelector("#discord hr").style.display = "block" };
+    if (data.activities.length > 1){ document.querySelector("#discord hr").style.display = "block" };
     document.querySelector("#discordApps").remove();
     document.querySelector("#discord").appendChild(discordApps);
 }
