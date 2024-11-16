@@ -43,7 +43,7 @@ async function injectDiscordData(){
         div.innerHTML = `
             <div class="discordAppThumbnail">
                 <img class="discordAppLargeImage" src='https://cdn.discordapp.com/app-assets/${app.application_id}/${app.assets.large_image}.png?size=160' />
-                <img class="discordAppSmallImage" src='https://cdn.discordapp.com/app-assets/${app.application_id}/${app.assets.small_image}.png?size=160' />
+                ${app.assets.small_image && `<img class="discordAppSmallImage" src='https://cdn.discordapp.com/app-assets/${app.application_id}/${app.assets.small_image}.png?size=160' />` || ""}
             </div>
 
             <div class="discordAppTexts">
@@ -51,10 +51,12 @@ async function injectDiscordData(){
                 <span class="discordAppState">${app.state || ""}</span>
                 <span class="discordAppDetails">${app.details}</span>
                 <span class="discordAppTime">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                ${app.timestamps &&
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                     </svg>
-                    ${getPassedTime(app.timestamps.start)}
+                    ${getPassedTime(app.timestamps.start)}`
+                || ""}
                 </span>
             </div>
         `;
