@@ -96,4 +96,4 @@ async function updateDiscordData(){
 }
 updateDiscordData()
 
-//setInterval(updateDiscordData, 1000);
+setInterval(updateDiscordData, 1000);
