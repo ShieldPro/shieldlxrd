@@ -106,6 +106,7 @@ section{
     outline: min(0.962vw, 5px) solid black;
     outline-offset: -1px;
     margin-bottom: max(-3.846vw, -20px);
+    background-color: black;
 }
 
 .discordAppName{

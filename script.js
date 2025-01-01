@@ -74,7 +74,7 @@ async function updateDiscordData(){
         div.classList.add("discordApp");
         div.innerHTML = `
             <div class="discordAppImages">
-                <img class="discordAppLargeImage" src="${app.assets ? 'https://cdn.discordapp.com/app-assets/' + app.application_id + '/' + app.assets.large_image + ".png?size=160" :  'https://dcdn.dstn.to/app-icons/' + app.application_id + '?size=256'}" />
+                <img class="discordAppLargeImage" src="${app.assets && app.assets.large_image ? 'https://cdn.discordapp.com/app-assets/' + app.application_id + '/' + app.assets.large_image + ".png?size=160" :  'https://dcdn.dstn.to/app-icons/' + app.application_id + '?size=256'}" />
                 ${app.assets && app.assets.small_image ? '<img class="discordAppSmallImage" src="https://cdn.discordapp.com/app-assets/' + app.application_id + '/' + app.assets.small_image + '.png?size=160" />' : ""}
             </div>
 
@@ -96,4 +96,4 @@ async function updateDiscordData(){
 }
 updateDiscordData()
 
-setInterval(updateDiscordData, 1000);
+//setInterval(updateDiscordData, 1000);
