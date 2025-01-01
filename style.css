@@ -1,152 +1,196 @@
 :root{
-    --primary-bg: #161618;
-    --secondary-bg: #1c1c1f;
-    --tertiary-bg: #232326;
-    --quaternary-bg: #28282c;
-    --quinary-bg: #2e2e32;
-
     --primary-text: #f7f8f8;
     --secondary-text: #d0d6e0;
     --tertiary-text: #8a8f98;
     --quaternary-text: #62666d;
-
-    --positive-color: #67d08a;
 }
 
 body{
     background-color: black;
+    margin: 0 !important;
     color: var(--primary-text);
     font-family: "Inter";
 }
 
-.section{
+.container{
+    padding: 0 10px !important;
+}
+
+section{
     display: flex;
     min-height: 100dvh;
-    justify-content: center;
-    align-items: center;
+}
 
-    scroll-snap-align: start;
+#discordSection{
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
 }
 
 #discord{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: min(3.077vw, 16px);
     user-select: none;
-    margin: 50px 0 50px 0;
+}
+
+#discordAvatar{
+    position: relative;
+    max-width: 100px;
+    width: 19.231vw;
+    top: max(-50px, -9.615vw);
+    margin-bottom: max(-50px, -9.615vw);
+    border-radius: 50%;
+    outline: min(0.962vw, 5px) solid black;
+    outline-offset: -1px;
+}
+
+#discordBanner{
+    max-width: 480px;
+    width: 92.308vw;
+    border-radius: min(1.154vw, 6px);
+}
+
+#discordDisplayname{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: min(1.923vw, 10px);
+}
+
+#discordUsername{
+    font-size: 0.8em;
+    color: var(--secondary-text);
+    user-select: text;
 }
 
 #discordApps{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 300px;
+    margin-top: min(7.692vw, 40px);
+    gap: min(1.923vw, 10px);
 }
 
 .discordApp{
     display: flex;
+    border: min(0.385vw, 2px) solid rgba(255, 255, 255, 0.05);
+    padding: min(1.923vw, 10px);
+    border-radius: min(1.154vw, 6px);
     align-items: center;
 }
 
-.discordAppThumbnail{
-    height: 64px;
+.discordAppDetails{
     display: flex;
-    position: relative;
-    overflow: hidden;
+    flex-direction: column;
+    margin-left: min(1.923vw, 10px);
+    width: 100%;
+}
+
+.discordAppImages{
+    display: flex;
+    flex-direction: column;
 }
 
 .discordAppLargeImage{
-    border-radius: 4px;
-    height: 100%;
+    height: min(12.308vw, 64px);
+    border-radius: min(0.769vw, 4px);
 }
 
 .discordAppSmallImage{
-    height: 20px;
-    outline: 4px black solid;
+    position: relative;
+    width: min(3.846vw, 20px);
+    bottom: min(3.846vw, 20px);
+    left: calc(100% - min(3.846vw, 20px));
     border-radius: 50%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    outline: min(0.962vw, 5px) solid black;
     outline-offset: -1px;
-}
-
-.discordAppTexts{
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-    font-size: 0.7rem;
-    width: 75%;
-    overflow: hidden;
-    color: var(--secondary-text);
+    margin-bottom: max(-3.846vw, -20px);
 }
 
 .discordAppName{
     font-weight: bold;
-    font-size: 1.2em;
-    color: var(--primary-text);
+    font-size: 0.9em;
+    line-height: 1em;
+    margin-bottom: min(0.385vw, 2px);
+}
+
+.discordAppDescription{
+    font-size: 0.8em;
+    line-height: 1.4em;
+    color: var(--secondary-text);
+}
+
+.discordAppState{
+    font-size: 0.8em;
+    line-height: 1.4em;
+    color: var(--secondary-text);
 }
 
 .discordAppTime{
     display: flex;
     align-items: center;
-    gap: 5px;
-    color: var(--positive-color);
-    font-weight: bold;
+    color: #67D08A;
+    font-size: 0.8em;
+    gap: min(0.769vw, 4px);
+    margin-top: min(0.385vw, 2px);
+    line-height: 1.2em;
 }
 
 .discordAppTime svg{
-    height: 1em;
+    height: min(2.692vw, 14px);
+    width: min(2.692vw, 14px);
 }
 
-.discordAppTrackInfo{
+.discordAppTrackTime{
+    font-size: 0.8em;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
+    align-items: center;
+}
+
+.discordAppTrackTime span{
+    width: min(11.538vw, 60px);
+}
+
+.discordAppTrackTime span:nth-of-type(2){
+    text-align: right;
 }
 
 .discordAppTrack{
-    width: 140px;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.discordAppPointer{
-    height: 2px;
-    background-color: rgb(255, 255, 255);
-}
-
-.discordAppTrackInfo span{
-    width: 32px;
-}
-
-hr{
     width: 100%;
-    background: var(--tertiary-text);
-    /*background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);*/
-    height: 1px;
-    border: none;
+    height: min(0.385vw, 2px);
+    background-color: grey;
 }
 
-#discordAvatar{
-    width: 100px;
-    border-radius: 50%;
-    outline: 3px rgb(128, 132, 142) solid;
-    outline-offset: 5px;
-    margin-bottom: 15px;
+.discordAppTrackPointer{
+    background-color: white;
+    height: 100%;
 }
 
-#discordDisplayName{
-    font-weight: bold;
-    font-size: 1.2rem;
+#discordSocials{
+    display: flex;
+    gap: min(0.962vw, 5px);
+    margin-top: min(1.923vw, 10px);
 }
 
-#discordUsername{
-    font-size: 0.8rem;
-    color: var(--secondary-text);
-    user-select: all;
+#discordSocials a{
+    all: unset;
+    border: min(0.385vw, 2px) solid rgba(255, 255, 255, 0.05);
+    width: min(5.769vw, 30px);
+    height: min(5.769vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: min(0.769vw, 4px);
 }
 
-#discord hr{
-    display: none;
+#discordSocials svg{
+    width: min(3.077vw, 16px);
+}
+
+#discordSocials a:hover{
+    cursor: pointer;
+    border: min(0.385vw, 2px) solid rgba(255, 255, 255, 0.1);
 }
