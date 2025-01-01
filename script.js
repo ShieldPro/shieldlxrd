@@ -55,15 +55,16 @@ async function updateDiscordData(){
                 <span class="discordAppDescription">${data.spotify.artist.replaceAll(";", ",")}</span>
 
                 <div class="discordAppTrackTime">
-                    <span>${getPassedTime(Math.min(data.spotify.timestamps.start), Date.now() + (data.spotify.timestamps.start - data.spotify.timestamps.end))}</span>
+                    <span>${getPassedTime(Math.max(data.spotify.timestamps.start, Date.now() + (data.spotify.timestamps.start - data.spotify.timestamps.end)))}</span>
                     <div class="discordAppTrack">
-                        <div class="discordAppTrackPointer" style="width: ${(Date.now() - data.spotify.timestamps.start) / (data.spotify.timestamps.end - data.spotify.timestamps.start) * 100}%;"></div>
+                        <div class="discordAppTrackPointer" style="width: ${Math.min((Date.now() - data.spotify.timestamps.start) / (data.spotify.timestamps.end - data.spotify.timestamps.start), 1) * 100}%;"></div>
                     </div>
                     <span>${getPassedTime(Date.now() + (data.spotify.timestamps.start - data.spotify.timestamps.end))}</span>
                 </div>
             </div>
         `;
         document.querySelector("#discordApps").appendChild(div);
+
     }
 
     data.activities.forEach(app => {
