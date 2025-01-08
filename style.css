@@ -208,7 +208,7 @@ tooltip{
     margin: min(5px, 0.962vw);
     border-radius: min(4px, 0.769vw);
     color: var(--secondary-text);
-    font-size: 0.8rem;
+    font-size: 0.8em;
     font-weight: bold;
 }
 
