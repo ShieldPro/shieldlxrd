@@ -204,9 +204,9 @@ tooltip{
     position: absolute;
     background-color: black;
     border: 1px rgba(255, 255, 255, 0.1) solid;
-    padding: 4px 10px;
-    margin: 5px;
-    border-radius: 4px;
+    padding: 0.769vw 1.923vw;
+    margin: 0.962vw;
+    border-radius: 0.769vw;
     color: var(--secondary-text);
     font-size: 0.8rem;
     font-weight: bold;
