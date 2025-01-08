@@ -64,7 +64,7 @@ async function updateDiscordData(){
             </div>
         `;
         document.querySelector("#discordApps").appendChild(div);
-
+        addTooltip(div.querySelector(".discordAppLargeImage"), "top", data.spotify.album)
     }
 
     data.activities.forEach(app => {
@@ -92,8 +92,57 @@ async function updateDiscordData(){
             </div>
         `;
         document.querySelector("#discordApps").appendChild(div);
+        if(app.assets.small_text){addTooltip(div.querySelector(".discordAppLargeImage"), "top", app.assets.large_text)}
+        if(app.assets.small_text){addTooltip(div.querySelector(".discordAppSmallImage"), "top", app.assets.small_text)}
     });
 }
 updateDiscordData()
 
 setInterval(updateDiscordData, 1000);
+
+// TOOLTIPS
+
+function addTooltip(element, placement, text){
+    element.addEventListener("mouseenter", (event) => {
+        if ( document.querySelector("tooltip") ) { document.querySelector("tooltip").remove(); };
+
+        var tooltip = document.createElement("tooltip");
+        tooltip.innerHTML = text;
+
+        document.querySelector("body").appendChild(tooltip);
+
+        // POZYCJONOWANIE
+        if (placement == "top") {
+            tooltip.style.top = element.getBoundingClientRect().top - (tooltip.getBoundingClientRect().height + parseInt(getComputedStyle(tooltip).marginBottom, 10) + parseInt(getComputedStyle(tooltip).marginTop, 10)) + "px";
+            tooltip.style.left = element.getBoundingClientRect().left - (tooltip.getBoundingClientRect().width + parseInt(getComputedStyle(tooltip).marginLeft, 10) + parseInt(getComputedStyle(tooltip).marginRight, 10))/2 + element.getBoundingClientRect().width/2 + "px";
+        }
+        else if (placement == "bottom"){
+            tooltip.style.top = element.getBoundingClientRect().bottom + "px";
+            tooltip.style.left = element.getBoundingClientRect().left - (tooltip.getBoundingClientRect().width + parseInt(getComputedStyle(tooltip).marginLeft, 10) + parseInt(getComputedStyle(tooltip).marginRight, 10))/2 + element.getBoundingClientRect().width/2 + "px";
+        }
+        else if (placement == "left"){
+            tooltip.style.top = element.getBoundingClientRect().top + element.getBoundingClientRect().height/2 - (tooltip.getBoundingClientRect().height + parseInt(getComputedStyle(tooltip).marginTop, 10) + parseInt(getComputedStyle(tooltip).marginBottom, 10))/2 + "px";
+            tooltip.style.left = element.getBoundingClientRect().left - (tooltip.getBoundingClientRect().width + parseInt(getComputedStyle(tooltip).marginLeft, 10) + parseInt(getComputedStyle(tooltip).marginRight, 10)) + "px";
+        }
+        else if (placement == "right"){
+            tooltip.style.top = element.getBoundingClientRect().top + element.getBoundingClientRect().height/2 - (tooltip.getBoundingClientRect().height + parseInt(getComputedStyle(tooltip).marginTop, 10) + parseInt(getComputedStyle(tooltip).marginBottom, 10))/2 + "px";
+            tooltip.style.left = element.getBoundingClientRect().right + "px";
+        }
+
+        document.querySelector("tooltip").style.animation = "tooltip-show 0.1s";
+    });
+
+    element.addEventListener("mouseleave", (event) => {
+        document.querySelector("tooltip").style.animation = "tooltip-hide 0.1s";
+
+        document.querySelector("tooltip").addEventListener("animationend", () => {
+            document.querySelector("tooltip").remove();
+          });
+    });
+}
+
+addTooltip(document.querySelector("#namemcLinkButton"), "bottom", "NameMC")
+addTooltip(document.querySelector("#discordLinkButton"), "bottom", "Discord")
+addTooltip(document.querySelector("#steamLinkButton"), "bottom", "Steam")
+addTooltip(document.querySelector("#spotifyLinkButton"), "bottom", "Spotify")
+addTooltip(document.querySelector("#youtubeLinkButton"), "bottom", "YouTube")

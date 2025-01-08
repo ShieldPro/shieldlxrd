@@ -5,11 +5,16 @@
     --quaternary-text: #62666d;
 }
 
+html{
+    box-sizing: border-box;
+}
+
 body{
     background-color: black;
     margin: 0 !important;
     color: var(--primary-text);
     font-family: "Inter";
+    font-size: min(3.077vw, 16px);
 }
 
 .container{
@@ -31,7 +36,6 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: min(3.077vw, 16px);
     user-select: none;
 }
 
@@ -194,4 +198,40 @@ section{
 #discordSocials a:hover{
     cursor: pointer;
     border: min(0.385vw, 2px) solid rgba(255, 255, 255, 0.1);
+}
+
+tooltip{
+    position: absolute;
+    background-color: black;
+    border: 1px rgba(255, 255, 255, 0.1) solid;
+    padding: 4px 10px;
+    margin: 5px;
+    border-radius: 4px;
+    color: var(--secondary-text);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+@keyframes tooltip-show {
+    0%{
+        scale: 0.8;
+        opacity: 0;
+    }
+
+    100%{
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes tooltip-hide {
+    0%{
+        scale: 1;
+        opacity: 1;
+    }
+
+    100%{
+        scale: 0.8;
+        opacity: 0;
+    }
 }
