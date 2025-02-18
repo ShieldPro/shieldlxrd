@@ -92,8 +92,8 @@ async function updateDiscordData(){
             </div>
         `;
         document.querySelector("#discordApps").appendChild(div);
-        if(app.assets.large_text){addTooltip(div.querySelector(".discordAppLargeImage"), "top", app.assets.large_text)}
-        if(app.assets.small_text){addTooltip(div.querySelector(".discordAppSmallImage"), "top", app.assets.small_text)}
+        if(app.assets && app.assets.large_text){addTooltip(div.querySelector(".discordAppLargeImage"), "top", app.assets.large_text)}
+        if(app.assets && app.assets.small_text){addTooltip(div.querySelector(".discordAppSmallImage"), "top", app.assets.small_text)}
     });
 }
 updateDiscordData()
